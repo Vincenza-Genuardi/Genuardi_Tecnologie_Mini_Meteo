@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="cityName" placeholder="Inserisci la città">
+        <button class="btn btn-primary" type="button" (click)="get5dayWeather()">Cerca</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="weatherData">
+    <div class="col-12">
+      <p class="lead">Città: {{ cityName }}</p>
+      <div *ngFor="let day of weatherData" class="card my-2">
+        <div class="card-body">
+          <h5 class="card-title">Data: {{ day.data }}</h5>
+          <p class="card-text">Descrizione: {{ day.description }}</p>
+          <p class="card-text">Temperatura: {{ day.temperature }}°C</p>
+          <p class="card-text">Temperatura minima: {{ day.minTemperature }}°C</p>
+          <p class="card-text">Temperatura massima: {{ day.maxTemperature }}°C</p>
+          <p class="card-text">Umidità: {{ day.humidity }}%</p>
+          <p class="card-text">Velocità del vento: {{ day.windSpeed }} m/s</p>
+          <p class="card-text">Probabilità di precipitazioni: {{ day.pop }} mm</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!weatherData">
+    <div class="col-12">
+      <p>Caricamento...</p>
+    </div>
+  </div>
+</div>

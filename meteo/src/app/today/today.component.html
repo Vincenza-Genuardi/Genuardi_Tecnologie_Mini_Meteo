@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="cityName" placeholder="Inserisci la città">
+        <button class="btn btn-primary" type="button" (click)="getCurrentWeather()">Cerca</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="weatherData">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Città: {{ cityName }}</h2>
+          <p class="card-text">{{ weatherData.description }}</p>
+          <p class="card-text">Temperatura: {{ weatherData.temperature }}°C</p>
+          <p class="card-text">Temperatura minima: {{ weatherData.minTemperature }}°C</p>
+          <p class="card-text">Temperatura massima: {{ weatherData.maxTemperature }}°C</p>
+          <p class="card-text">Umidità: {{ weatherData.humidity }}%</p>
+          <p class="card-text">Velocità del vento: {{ weatherData.windSpeed }} m/s</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!weatherData">
+    <div class="col-12">
+      <p>Caricamento...</p>
+    </div>
+  </div>
+</div>
